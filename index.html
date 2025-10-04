@@ -10,20 +10,21 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 1000px; /* visible area you want */
+  height: 1000px; /* the visible area you want */
 }
 
+/* The iframe is taller and shifted up by 180px to crop the top */
 .dex-frame {
   position: absolute;
-  top: -180;
+  top: -180px;     /* crop 180px from top */
   left: 0;
   border: 0;
-
-  /* Scale dynamically with container width */
   transform-origin: 0 0;
-  width: 120%;   /* oversize so no right margin */
-  height: 1600px; /* tall enough to cover all tokens at scale */
+  width: 120%;     /* oversize slightly so scaling doesn't leave gaps */
+  height: 1800px;  /* taller than container so bottom isn’t clipped */
 }
+
+/* Responsive scaling */
 @media (max-width: 1200px) {
   .dex-frame { transform: scale(0.85); }
 }
