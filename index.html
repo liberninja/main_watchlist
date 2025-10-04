@@ -1,8 +1,10 @@
 <div class="dex-container">
-  <iframe 
-    src="https://dexscreener.com/watchlist/ll1Epx1BuFRfgtML7VVW?embed=1&theme=dark"
-    class="dex-frame">
-  </iframe>
+  <div class="dex-wrapper">
+    <iframe 
+      src="https://dexscreener.com/watchlist/ll1Epx1BuFRfgtML7VVW?embed=1&theme=dark"
+      class="dex-frame">
+    </iframe>
+  </div>
 </div>
 
 <style>
@@ -10,18 +12,24 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 1000px; /* the visible area you want */
+  height: 1000px; /* final visible height */
 }
 
-/* The iframe is taller and shifted up by 180px to crop the top */
-.dex-frame {
+/* wrapper shifts content up before scaling */
+.dex-wrapper {
   position: absolute;
-  top: -180px;     /* crop 180px from top */
+  top: -180px;  /* crop off top 180px */
   left: 0;
+  width: 100%;
+  height: calc(100% + 180px); /* add back extra height so nothing is cut */
+  overflow: hidden;
+}
+
+.dex-frame {
   border: 0;
   transform-origin: 0 0;
-  width: 120%;     /* oversize slightly so scaling doesn't leave gaps */
-  height: 1800px;  /* taller than container so bottom isn’t clipped */
+  width: 120%;
+  height: 1800px; /* must be tall enough for all rows */
 }
 
 /* Responsive scaling */
